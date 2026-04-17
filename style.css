@@ -1,0 +1,9 @@
+/* Base */
+body {
+  font-family: Arial, sans-serif;
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background: #f4f6f8;
+  color: #333;
+}
