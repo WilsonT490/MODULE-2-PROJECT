@@ -1,10 +1,8 @@
 const form = document.getElementById('search-form');
-const input = document.getElementById('word-input');
-
-const wordEl = document.getElementById('word');
+const input = document.getElementById('search-input');
 const phoneticEl = document.getElementById('phonetic');
 const definitionsEl = document.getElementById('definitions');
-const errorDiv = document.getElementById('error');
+const errorDiv = document.getElementById('error-message');
 
 // Fetch word
 async function fetchWord(word) {
@@ -17,7 +15,6 @@ async function fetchWord(word) {
     }
 
     const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-    
     if (!res.ok) {
       throw new Error('Word not found');
     }
@@ -27,7 +24,7 @@ async function fetchWord(word) {
     const result = data[0];
 
     // Display
-    wordEl.textContent = result.word;
+    const wordEl = document.getElementById('word');
     phoneticEl.textContent = result.phonetic || '';
 
     definitionsEl.innerHTML = '';
@@ -50,3 +47,8 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   fetchWord(input.value.trim());
 });
+phonetics: [
+  {
+    "audio": "https://something.mp3"
+  }
+]
